@@ -1,7 +1,12 @@
 import React from "react";
+import ApiTest from "./_components/ApiTest";
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <ApiTest />
+    </>
+  );
 };
 
 export default page;
