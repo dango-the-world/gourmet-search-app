@@ -2,14 +2,21 @@
 
 import { useState } from "react";
 
-export default function ApiTest() {
+export default function SearchPage() {
   const [keyword, setKeyword] = useState("");
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
   const [results, setResults] = useState<any[]>([]);
 
   const handleSearch = async () => {
-    const response = await fetch(
-      `/api/search?keyword=${encodeURIComponent(keyword)}`
-    );
+    const params = new URLSearchParams();
+    if (keyword) params.append("keyword", keyword);
+    if (lat && lng) {
+      params.append("lat", lat);
+      params.append("lng", lng);
+    }
+
+    const response = await fetch(`/api/search?${params.toString()}`);
     const data = await response.json();
 
     if (data.results) {
@@ -25,6 +32,18 @@ export default function ApiTest() {
         value={keyword}
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="キーワードを入力"
+      />
+      <input
+        type="text"
+        value={lat}
+        onChange={(e) => setLat(e.target.value)}
+        placeholder="緯度 (lat)"
+      />
+      <input
+        type="text"
+        value={lng}
+        onChange={(e) => setLng(e.target.value)}
+        placeholder="経度 (lng)"
       />
       <button onClick={handleSearch}>検索</button>
 
