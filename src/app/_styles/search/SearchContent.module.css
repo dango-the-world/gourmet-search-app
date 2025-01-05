@@ -1,8 +1,9 @@
+/* SearchContentコンポーネント用のcssモジュール */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #53d3f2;
+  background-color: #ffbf7f;
   width: 100vw;
   height: 100vh;
 }
