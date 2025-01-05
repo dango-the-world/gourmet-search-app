@@ -1,12 +1,10 @@
 import React from "react";
-import ApiTest from "./_components/ApiTest";
-import { Geolocation } from "./_components/Geolocation";
+import { SearchContent } from "./_components/search/SearchContent";
 
 const page = () => {
   return (
     <>
-      <ApiTest />
-      <Geolocation />
+      <SearchContent />
     </>
   );
 };
