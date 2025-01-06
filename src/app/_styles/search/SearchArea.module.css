@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf3e0;
+  width: 50%;
+  height: 60%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 1.6rem;
+  padding: 20px;
+}
+
+.formWrap {
+  width: 60%;
+}
+
+.select,
+.input,
+.submit {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.submit {
+  background-color: #1664ec;
+  color: #ffffff;
+}
