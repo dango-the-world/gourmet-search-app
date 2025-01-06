@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { geolocationState } from "../_interfaces/geolocationState";
+import { geolocationState } from "../_interfaces/geolocationStateInterface";
 
 /**
  * Geolocation APIを使用した位置情報を取得するHooks

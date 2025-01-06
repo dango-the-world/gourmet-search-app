@@ -1,44 +1,23 @@
-// 検索エリアのコンポーネント
 "use client";
 
-import React, { useState } from "react";
 import style from "../../_styles/search/SearchArea.module.css";
 import { useLocation } from "@/app/_hooks/useLocation";
-import { useRouter } from "next/navigation";
+import { useSearchForm } from "@/app/_hooks/useSearch";
 
 export const SearchArea = () => {
   const { latitude, longitude, error } = useLocation();
-  const [selectedRange, setSelectedRange] = useState("");
-  const [keyword, setKeyword] = useState("");
-  const router = useRouter();
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // 検索条件をクエリパラメータとして次のページに遷移
-    router.push(`/search-results?range=${selectedRange}&keyword=${keyword}`);
-  };
+  const { selectedRange, setSelectedRange, keyword, setKeyword, handleSubmit } =
+    useSearchForm({
+      latitude,
+      longitude,
+    });
 
   const options = [
-    {
-      id: 1,
-      range: "300m",
-    },
-    {
-      id: 2,
-      range: "500m",
-    },
-    {
-      id: 3,
-      range: "1000m",
-    },
-    {
-      id: 4,
-      range: "2000m",
-    },
-    {
-      id: 5,
-      range: "3000m",
-    },
+    { id: 1, range: "現在地から半径300m" },
+    { id: 2, range: "現在地から半径500m" },
+    { id: 3, range: "現在地から半径1000m" },
+    { id: 4, range: "現在地から半径2000m" },
+    { id: 5, range: "現在地から半径3000m" },
   ];
 
   return (
@@ -46,15 +25,9 @@ export const SearchArea = () => {
       <h2 className={style.title}>レストラン検索</h2>
 
       {error ? (
-        <p style={{ color: "red" }}>
-          現在地を取得できませんでした。設定を確認してください。: {error}
-        </p>
-      ) : latitude && longitude ? (
-        <p>
-          現在地: 緯度 {latitude}, 経度 {longitude}
-        </p>
+        <p>現在地を取得できませんでした: {error || "不明なエラー"}</p>
       ) : (
-        <p>現在地を取得中...</p>
+        ""
       )}
 
       <div className={style.formWrap}>
@@ -70,7 +43,7 @@ export const SearchArea = () => {
               検索範囲を選択してください
             </option>
             {options.map((option) => (
-              <option key={option.id} value={option.id}>
+              <option key={option.id} value={option.range}>
                 {option.range}
               </option>
             ))}
