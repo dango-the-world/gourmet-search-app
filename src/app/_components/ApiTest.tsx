@@ -24,6 +24,8 @@ export default function SearchPage() {
     }
   };
 
+  console.log(results);
+
   return (
     <div>
       <h1>ホットペッパーグルメ検索</h1>
@@ -49,7 +51,12 @@ export default function SearchPage() {
 
       <ul>
         {results.map((shop) => (
-          <li key={shop.id}>{shop.name}</li>
+          <div key={shop.id}>
+            <li>{shop.name}</li>
+            <img alt="" src={shop.photo.pc.l} />
+            <img alt="" src={shop.photo.pc.s} />
+            <img alt="" src={shop.photo.pc.m} />
+          </div>
         ))}
       </ul>
     </div>
