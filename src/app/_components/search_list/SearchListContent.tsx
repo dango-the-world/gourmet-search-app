@@ -3,11 +3,15 @@
 import useFetchApi from "@/app/_hooks/useFetchApi";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
+import { RestaurantCard } from "./RestaurantCard";
+import style from "../../_styles/search_list/SearchList.module.css";
 
 export const SearchListContent = () => {
   const searchParams = useSearchParams();
 
-  // queryParamsをuseMemoでメモ化
+  const keyword = searchParams.get("keyword");
+
+  // 無限ループが発生してしまったため、useMemoを使用し防止
   const queryParams = useMemo(
     () => ({
       range: searchParams.get("range"),
@@ -18,33 +22,37 @@ export const SearchListContent = () => {
     [searchParams]
   );
 
-  const { data, loading, error } = useFetchApi(queryParams);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const { data, loading } = useFetchApi(queryParams);
 
   const shops = data?.results?.shop || [];
 
+  console.log(shops);
+
   return (
-    <div>
-      <h1>検索結果</h1>
-      {shops.length > 0 ? (
-        <ul>
-          {shops.map((shop) => (
-            <li key={shop.id}>
-              <h2>{shop.name}</h2>
-              <p>{shop.address}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>該当するお店が見つかりませんでした。</p>
-      )}
+    <div className={style.container}>
+      <div className={style.listWrap}>
+        <h1 className={style.caption}>検索結果:{keyword}</h1>
+        {loading ? (
+          <div>検索しています…</div>
+        ) : (
+          <div>
+            {shops.length > 0 ? (
+              <div>
+                {shops.map((shop) => (
+                  <RestaurantCard
+                    key={shop.id}
+                    name={shop.name}
+                    access={shop.access}
+                    thumbnail={shop.logo_image}
+                  />
+                ))}
+              </div>
+            ) : (
+              <p>該当するお店が見つかりませんでした。</p>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

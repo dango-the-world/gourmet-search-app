@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-
-interface HotpepperData {
-  results: {
-    shop: {
-      id: string;
-      name: string;
-      address: string;
-    }[];
-  };
-}
+import { hotpepperGetData } from "../_interfaces/hotpepperGetDataInterface";
 
 const useFetchApi = (queryParams: {
   range: string | null;
@@ -16,9 +7,8 @@ const useFetchApi = (queryParams: {
   latitude: string | null;
   longitude: string | null;
 }) => {
-  const [data, setData] = useState<HotpepperData | null>(null);
+  const [data, setData] = useState<hotpepperGetData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const { range, keyword, latitude, longitude } = queryParams;
@@ -36,8 +26,8 @@ const useFetchApi = (queryParams: {
 
         const json = await res.json();
         setData(json);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -45,7 +35,7 @@ const useFetchApi = (queryParams: {
 
     fetchData();
   }, [queryParams]);
-  return { data, loading, error };
+  return { data, loading };
 };
 
 export default useFetchApi;
