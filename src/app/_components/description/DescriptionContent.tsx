@@ -14,13 +14,22 @@ export const DescriptionContent = () => {
 
   const shops = data?.results?.shop || [];
 
+  console.log(shops);
+
   return (
     <div className={style.container}>
       {loading ? (
         <div>読み込み中…</div>
       ) : (
         shops.map((shop) => (
-          <DescriptionCard key={shop.id} image={shop.photo.pc?.l} />
+          <DescriptionCard
+            key={shop.id}
+            name={shop.name}
+            image={shop.photo.pc?.l}
+            catch_copy={shop.catch}
+            address={shop.address}
+            open={shop.open}
+          />
         ))
       )}
     </div>

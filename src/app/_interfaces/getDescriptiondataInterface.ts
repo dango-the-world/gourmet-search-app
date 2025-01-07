@@ -10,6 +10,7 @@ export interface getDescriptionData {
       name: string;
       address: string;
       open: string;
+      catch: string;
     }[];
   };
 }

@@ -1,9 +1,36 @@
 .card {
   background-color: #faf3e0;
   width: 50%;
-  height: 80%;
   margin: 10px 0;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.cardLayout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardTop {
+  border-bottom: 1px solid #999;
+  margin-bottom: 5px;
+}
+
+.catchCopy {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.shopName {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.text {
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  padding-bottom: 5px;
 }
