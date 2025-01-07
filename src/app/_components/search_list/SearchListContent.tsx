@@ -1,3 +1,4 @@
+// 検索表示コンポーネント
 "use client";
 
 import useFetchApi from "@/app/_hooks/useFetchApi";
@@ -23,11 +24,10 @@ export const SearchListContent = () => {
     [searchParams]
   );
 
+  // queryParams元にAPIの検索を行い、データを取得
   const { data, loading } = useFetchApi(queryParams);
 
   const shops = data?.results?.shop || [];
-
-  console.log(shops);
 
   return (
     <div className={style.container}>
@@ -55,7 +55,7 @@ export const SearchListContent = () => {
                 ))}
               </div>
             ) : (
-              <p>該当するお店が見つかりませんでした。</p>
+              <p>該当する店が見つかりませんでした。</p>
             )}
           </div>
         )}

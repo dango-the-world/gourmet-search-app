@@ -1,6 +1,8 @@
+// 検索結果カードコンポーネント
 import React from "react";
 import style from "../../_styles/search_list/RestaurantCard.module.css";
 
+// 受け取ったpropsの型を定義
 type Props = {
   name: string;
   access: string;
