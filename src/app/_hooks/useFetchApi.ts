@@ -17,11 +17,11 @@ const useFetchApi = (queryParams: {
       setLoading(true);
       try {
         const res = await fetch(
-          `/api/hotpepper?range=${range}&keyword=${keyword}&latitude=${latitude}&longitude=${longitude}`
+          `/api/hotpepper/search_list?range=${range}&keyword=${keyword}&latitude=${latitude}&longitude=${longitude}`
         );
 
         if (!res.ok) {
-          throw new Error("Failed to fetch search results");
+          throw new Error("データの取得に失敗しました。");
         }
 
         const json = await res.json();

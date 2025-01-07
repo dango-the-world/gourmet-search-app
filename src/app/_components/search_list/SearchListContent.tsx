@@ -40,7 +40,11 @@ export const SearchListContent = () => {
             {shops.length > 0 ? (
               <div>
                 {shops.map((shop) => (
-                  <a href="" key={shop.id} className={style.link}>
+                  <a
+                    href={`search_list/description/${shop.id}`}
+                    key={shop.id}
+                    className={style.link}
+                  >
                     <RestaurantCard
                       name={shop.name}
                       access={shop.access}
