@@ -9,6 +9,7 @@ import style from "../../_styles/search_list/SearchList.module.css";
 export const SearchListContent = () => {
   const searchParams = useSearchParams();
 
+  // 表示用にkeyword取得
   const keyword = searchParams.get("keyword");
 
   // 無限ループが発生してしまったため、useMemoを使用し防止
@@ -39,12 +40,14 @@ export const SearchListContent = () => {
             {shops.length > 0 ? (
               <div>
                 {shops.map((shop) => (
-                  <RestaurantCard
-                    key={shop.id}
-                    name={shop.name}
-                    access={shop.access}
-                    thumbnail={shop.logo_image}
-                  />
+                  <a href="" key={shop.id} className={style.link}>
+                    <RestaurantCard
+                      name={shop.name}
+                      access={shop.access}
+                      thumbnail={shop.logo_image}
+                      average={shop.budget.average}
+                    />
+                  </a>
                 ))}
               </div>
             ) : (

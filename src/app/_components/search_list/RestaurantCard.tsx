@@ -5,9 +5,10 @@ type Props = {
   name: string;
   access: string;
   thumbnail: string;
+  average: string;
 };
 
-export const RestaurantCard = ({ name, access, thumbnail }: Props) => {
+export const RestaurantCard = ({ name, access, thumbnail, average }: Props) => {
   return (
     <div className={style.card}>
       <div className={style.cardLayout}>
@@ -16,7 +17,10 @@ export const RestaurantCard = ({ name, access, thumbnail }: Props) => {
         </figure>
         <div>
           <h2 className={style.shopName}>{name}</h2>
-          <div>{access}</div>
+          <p className={style.cardText}>
+            価格帯:{average ? average : "記載なし"}
+          </p>
+          <p className={style.cardText}>{access}</p>
         </div>
       </div>
     </div>

@@ -8,6 +8,9 @@ export interface hotpepperGetData {
         l: string;
       };
       logo_image: string;
+      budget: {
+        average: string;
+      };
     }[];
   };
 }
