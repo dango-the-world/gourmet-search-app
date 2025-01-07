@@ -1,8 +1,14 @@
 import React from "react";
 import style from "../../_styles/description/DescriptionCard.module.css";
 
-type Props = {};
+type Props = {
+  image: string | undefined;
+};
 
-export const DescriptionCard = () => {
-  return <div className={style.card}></div>;
+export const DescriptionCard = ({ image }: Props) => {
+  return (
+    <div className={style.card}>
+      <img src={image} alt="" />
+    </div>
+  );
 };

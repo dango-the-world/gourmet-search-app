@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDescriptionData } from "../_interfaces/getDescriptiondataInterface";
 
-const useGetDescription = (id: string | null) => {
+const useGetDescription = (id?: string | string[] | undefined | null) => {
   const [data, setData] = useState<getDescriptionData | null>();
   const [loading, setLoading] = useState(true);
 
@@ -9,7 +9,7 @@ const useGetDescription = (id: string | null) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`api/hotpepper/description?id=${id}`);
+        const res = await fetch(`/api/hotpepper/description?id=${id}`);
 
         if (!res.ok) {
           throw new Error("データの取得に失敗しました。");

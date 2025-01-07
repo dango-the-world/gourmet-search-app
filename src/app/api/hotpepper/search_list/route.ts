@@ -13,17 +13,15 @@ export async function GET(req: Request) {
 
   const apiUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${apiKey}&range=${range}&keyword=${keyword}&lat=${latitude}&lng=${longitude}&format=json`;
 
-  console.log("API accessed:", req.url);
-
   try {
     const response = await fetch(apiUrl);
     if (!response.ok) {
-      throw new Error("Failed to fetch data from Hot Pepper API");
+      throw new Error("APIからデータを取得できませんでした");
     }
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
-    console.error(error);
+  } catch (err: unknown) {
+    console.error(err);
     return NextResponse.json(
       { error: "Failed to fetch data" },
       { status: 500 }

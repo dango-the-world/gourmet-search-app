@@ -1,9 +1,15 @@
 export interface getDescriptionData {
-  id: string;
-  pc: {
-    l: string;
+  results: {
+    shop: {
+      id: string;
+      photo: {
+        pc?: {
+          l: string;
+        };
+      };
+      name: string;
+      address: string;
+      open: string;
+    }[];
   };
-  name: string;
-  address: string;
-  open: string;
 }
