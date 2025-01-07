@@ -46,7 +46,7 @@ export const useSearchForm = ({
     });
 
     // ページを遷移
-    router.push(`/SearchList?${query.toString()}`);
+    router.push(`/search_list?${query.toString()}`);
   };
 
   return {

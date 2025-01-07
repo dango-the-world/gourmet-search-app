@@ -1,0 +1,22 @@
+.container {
+  margin: auto;
+  background-color: #ffbf7f;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.listWrap {
+  width: 50%;
+  margin: auto;
+  padding: 40px 0;
+}
+
+.caption {
+  font-size: 1.4rem;
+  padding: 20px 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #222;
+}

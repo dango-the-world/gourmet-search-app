@@ -43,7 +43,7 @@ export const SearchArea = () => {
               検索範囲を選択してください
             </option>
             {options.map((option) => (
-              <option key={option.id} value={option.range}>
+              <option key={option.id} value={option.id}>
                 {option.range}
               </option>
             ))}
