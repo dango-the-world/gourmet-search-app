@@ -1,6 +1,8 @@
+// 店舗詳細を表示するカードコンポーネント
 import React from "react";
 import style from "../../_styles/description/DescriptionCard.module.css";
 
+// propsで受け取ったデータの型定義
 type Props = {
   name: string | undefined;
   image: string | undefined;

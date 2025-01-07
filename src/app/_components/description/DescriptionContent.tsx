@@ -7,14 +7,15 @@ import { useParams } from "next/navigation";
 import useGetDescription from "@/app/_hooks/useGetDescription";
 
 export const DescriptionContent = () => {
+  // useParamsを使用し、urlから店舗idを取得
   const params = useParams();
   const id = params.id;
 
+  // Hooksを使用
+  // 引数にidを設定し、APIからデータを取得
   const { data, loading } = useGetDescription(id);
 
   const shops = data?.results?.shop || [];
-
-  console.log(shops);
 
   return (
     <div className={style.container}>

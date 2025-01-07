@@ -5,13 +5,17 @@ import { useLocation } from "@/app/_hooks/useLocation";
 import { useSearchForm } from "@/app/_hooks/useSearch";
 
 export const SearchArea = () => {
+  // 現在地を取得
   const { latitude, longitude, error } = useLocation();
+
+  // フォーム入力された値と取得した位置情報を元に、ページを遷移させるHooks
   const { selectedRange, setSelectedRange, keyword, setKeyword, handleSubmit } =
     useSearchForm({
       latitude,
       longitude,
     });
 
+  // optionを定義
   const options = [
     { id: 1, range: "現在地から半径300m" },
     { id: 2, range: "現在地から半径500m" },

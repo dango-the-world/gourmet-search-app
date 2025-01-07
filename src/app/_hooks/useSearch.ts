@@ -35,6 +35,11 @@ export const useSearchForm = ({
       return;
     }
 
+    if (!keyword) {
+      alert("キーワードを入力してください");
+      return;
+    }
+
     // queryの定義
     // 入力されたデータと取得した位置情報を遷移先に送る
     const query = new URLSearchParams({
