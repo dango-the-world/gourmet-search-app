@@ -12,7 +12,7 @@ export const DescriptionContent = () => {
   const id = params.id;
 
   // Hooksを使用
-  // 引数にidを設定
+  // 引数にidを設定し、APIからデータを取得
   const { data, loading } = useGetDescription(id);
 
   const shops = data?.results?.shop || [];
