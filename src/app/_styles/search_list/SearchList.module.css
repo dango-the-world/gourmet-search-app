@@ -19,3 +19,39 @@
   text-decoration: none;
   color: #222;
 }
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.backButton {
+  transition: 0.3s;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ff7f50;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+}
+
+.backButton:hover {
+  opacity: 0.5;
+}

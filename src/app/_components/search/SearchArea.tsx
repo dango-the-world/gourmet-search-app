@@ -1,3 +1,4 @@
+// 検索エリアのコンポーネント
 "use client";
 
 import style from "../../_styles/search/SearchArea.module.css";
