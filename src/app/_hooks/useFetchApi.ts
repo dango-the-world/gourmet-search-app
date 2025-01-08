@@ -12,12 +12,15 @@ const useFetchApi = (queryParams: {
   keyword: string | null;
   latitude: string | null;
   longitude: string | null;
+  // ページング実装用
+  start: number;
 }) => {
   const [data, setData] = useState<hotpepperGetData | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { range, keyword, latitude, longitude } = queryParams;
+    // 分割代入でqueryParamsオブジェクトから値を取得
+    const { range, keyword, latitude, longitude, start } = queryParams;
 
     /**
      * データを取得する関数
@@ -27,7 +30,7 @@ const useFetchApi = (queryParams: {
       try {
         // 受け取った値を元にNext.jsのAPIを叩く
         const res = await fetch(
-          `/api/hotpepper/search_list?range=${range}&keyword=${keyword}&latitude=${latitude}&longitude=${longitude}`
+          `/api/hotpepper/search_list?range=${range}&keyword=${keyword}&latitude=${latitude}&longitude=${longitude}&start=${start}`
         );
 
         if (!res.ok) {
@@ -44,6 +47,8 @@ const useFetchApi = (queryParams: {
     };
 
     fetchData();
+
+    // urlが更新された場合に再実行
   }, [queryParams]);
   return { data, loading };
 };

@@ -1,5 +1,7 @@
 export interface hotpepperGetData {
   results: {
+    results_available: number;
+    results_returned: string;
     shop: {
       id: string;
       name: string;

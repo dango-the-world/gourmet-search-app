@@ -1,19 +1,19 @@
-// ホットペッパーのAPIと通信するエンドポイント
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-  // 受け取ったリクエストからrange,keyword,latitude,longitudeを取得
+  // 受け取ったリクエストからrange,keyword,latitude,longitude,startを取得
   const { searchParams } = new URL(req.url);
   const range = searchParams.get("range");
   const keyword = searchParams.get("keyword");
   const latitude = searchParams.get("latitude");
   const longitude = searchParams.get("longitude");
+  const start = searchParams.get("start");
 
   // ホットペッパーのAPIキーを環境変数から取得
   const apiKey = process.env.HOTPEPPER_API_KEY;
 
   // 取得した値を元にデータを取得するurl
-  const apiUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${apiKey}&range=${range}&keyword=${keyword}&lat=${latitude}&lng=${longitude}&format=json`;
+  const apiUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${apiKey}&range=${range}&keyword=${keyword}&lat=${latitude}&lng=${longitude}&start=${start}&format=json`;
 
   try {
     // データ取得
